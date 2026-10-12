@@ -222,6 +222,9 @@ interface UIState {
   projectPickerIntent: "task" | "issue";
   /** ⇧⌘P command palette — searchable list of every command / action. */
   commandPaletteOpen: boolean;
+  /** Which list the palette opens on: "theme" skips straight to the
+   *  Change-theme list (the sidebar theme icon, ⌥⌘T). */
+  commandPaletteView: "root" | "theme";
   /** ⌥⌘P prompt palette — searchable list of library prompts (title only). */
   promptPaletteOpen: boolean;
   /** "Set syntax" picker — which editor tab it will re-highlight; null =
@@ -361,7 +364,7 @@ interface UIState {
   closeSearchEverywhere: () => void;
   openProjectPicker: (intent?: "task" | "issue") => void;
   closeProjectPicker: () => void;
-  openCommandPalette: () => void;
+  openCommandPalette: (view?: "root" | "theme") => void;
   closeCommandPalette: () => void;
   openPromptPalette: () => void;
   closePromptPalette: () => void;
@@ -515,6 +518,7 @@ export const useUI = create<UIState>((set, get) => ({
   projectPickerOpen: false,
   projectPickerIntent: "task",
   commandPaletteOpen: false,
+  commandPaletteView: "root",
   promptPaletteOpen: false,
   syntaxPaletteFor: null,
   promptFire: null,
@@ -598,7 +602,7 @@ export const useUI = create<UIState>((set, get) => ({
   closeFindInFiles:  () => set({ findInFilesTaskId: null }),
   openProjectPicker: (intent = "task") => set({ projectPickerOpen: true, projectPickerIntent: intent }),
   closeProjectPicker:() => set({ projectPickerOpen: false }),
-  openCommandPalette: () => set({ commandPaletteOpen: true }),
+  openCommandPalette: (view = "root") => set({ commandPaletteOpen: true, commandPaletteView: view }),
   closeCommandPalette:() => set({ commandPaletteOpen: false }),
   openPromptPalette: () => set({ promptPaletteOpen: true }),
   closePromptPalette:() => set({ promptPaletteOpen: false }),

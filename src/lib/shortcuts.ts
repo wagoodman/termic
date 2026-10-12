@@ -47,6 +47,7 @@ export type ShortcutId =
   | "terminal-paste"
   | "new-task-quick"
   | "command-palette"
+  | "change-theme"
   | "open-settings"
   | "file-finder"
   | "find-in-files"
@@ -197,6 +198,9 @@ export const SHORTCUT_DEFS: ShortcutDef[] = [
   { id: "command-palette", group: "General", label: "Command palette",
     hint: `Search every command and action (the ${kbd("⇧⌘P")} convention from VS Code / Sublime)`,
     defaultBinding: B("p", { cmd: true, shift: true }) },
+  { id: "change-theme", group: "General", label: "Change theme",
+    hint: "Every theme, with a live preview as you arrow through them",
+    defaultBinding: B("t", { cmd: true, alt: true }) },
   { id: "new-task-quick", group: "General", label: "New task…",
     hint: "Search a project and start a new task", defaultBinding: B("n", { cmd: true }) },
   { id: "open-settings", group: "General", label: "Open settings",
