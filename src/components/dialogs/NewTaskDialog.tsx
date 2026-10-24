@@ -2227,7 +2227,7 @@ export function NewTaskDialog() {
         </Field>
         )}
 
-        {/* Secrets role (M4). Hidden until a role exists in Settings. */}
+        {/* Secrets role. Hidden until a role exists in Settings. */}
         {canSandbox && roles.length > 0 && (
           <RolePicker
             roles={roles}
